@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.5.0" client="site" method="upgrade">
+    <name>Scouting Schedule</name>
+    <author>Tristan de Boer</author>
+    <authorEmail>info@tristandeboer.nl</authorEmail>
+    <creationDate>22 april 2018</creationDate>
+    <copyright>Copyright 2018 Tristan de Boer</copyright>
+    <license>GNU/GPL, see LICENSE.md</license>
+    <version>1.0.0</version>
+    <description>
+      Een module om een tijdschema te tonen
+    </description>
+    <files>
+        <filename>mod_schedule.xml</filename>
+        <filename module="mod_schedule">mod_schedule.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+        <folder>images</folder>
+    </files>
+    <config>
+      <fields name="params">
+        <fieldset name="basic">
+          <field name="filter" type="text" default="" label="Vul een filter in" description="Filter voor subkamptag" size="50" />
+        </fieldset>
+      </fields>
+    </config>
+</extension>

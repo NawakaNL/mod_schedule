@@ -1,0 +1,160 @@
+.schedule > .schedule-title {
+  background: none;
+  background-color: #010050;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px
+}
+
+.schedule {
+  background-color: #FFFFFF;
+}
+
+.schedule > .schedule-content {
+  border: 1px solid #a8c7e0;
+  border-top: none;
+}
+
+/**
+ * Schedule date selector
+ */
+.schedule > .schedule-content > ul {
+  margin: 0 0 0 0 !important;
+}
+
+.schedule ul.nav {
+  white-space: nowrap;
+}
+
+.schedule ul.nav li {
+  display: inline-block;
+}
+
+.schedule ul.nav li {
+  padding: 0 !important;
+  width: 100px;
+  text-align: center;
+}
+
+.schedule ul.nav li span {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.schedule ul.nav li a {
+  text-align: center !important;
+  background-image: none !important;
+  padding: 0px 10px 0px 10px !important;
+}
+
+.schedule ul.nav li.active {
+  background-color: #CCEEFF;
+}
+.schedule ul.nav li.active a {
+  color: #FF6600 !important;
+}
+
+.schedule .nav {
+  overflow-x: scroll;
+}
+
+/**
+ * Schedule content
+ */
+.schedule .tab-content ul {
+  margin: 0 0 0 0 !important;
+}
+
+.schedule .tab-content ul > li {
+  padding: 5px 15px 5px 15px !important;
+
+}
+
+.schedule .tab-content ul > li > div {
+  display: inline-block;
+}
+
+.schedule .tab-content ul > li > .event-description {
+  margin-left: 5px;
+  overflow: hidden;
+}
+
+.schedule .tab-content ul > li > .event-description > div {
+  display: block;
+}
+
+.schedule .tab-content ul > li > .event-description > .event-location {
+  font-size: 10px;
+  color: #007FBA;
+}
+
+
+.schedule .tab-content ul > li > .event-date {
+  display: none;
+}
+
+.schedule .tab-content ul > li > .event-time {
+  color: rgb(116, 161, 205);
+  font-size: 12px;
+}
+
+.schedule .tab-content ul > li > div {
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 15px;
+  color: #1A368D;
+}
+
+.schedule > .schedule-content > div> ul > a {
+  background-image: none !important;
+  padding: 10px 0px !important;
+  margin: 0px 0px !important;
+  max-height: 40px;
+}
+
+/**
+ * Labels
+ */
+.labels {
+}
+
+.label {
+  text-transform: capitalize;
+}
+
+.label.label-rif {
+  background-color: #93c462;
+}
+
+.label.label-oase {
+  background-color: #ffe054;
+}
+
+.label.label-palmeiland {
+  background-color: #eb5d40;
+}
+
+.label.label-atlantis {
+  background-color: #4565ad;
+}
+
+.label.label-waterval {
+  background-color: #ec619f;
+}
+
+.label.label-bermuda {
+  background-color: #f39200;
+}
+
+.label.label-adg {
+  background-color: #56a8dd;
+}
+
+.label.label-adh {
+  background-color: #27682E;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+}
