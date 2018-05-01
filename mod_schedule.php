@@ -31,14 +31,13 @@ $schedule = json_decode($file_contents);
 
 // Group schedule per day
 $grouped_events = [];
-
 foreach ($schedule as $value) {
   $key = strftime('<span>%A</span><br> %e %B', $value->startDate/1000);
   $grouped_events = appendThings($grouped_events, $key, $value);
 }
 
+// Filter for subcamp filtering
 $filter = $params->get('filter');
-
 
 // Add CSS
 $document = JFactory::getDocument();

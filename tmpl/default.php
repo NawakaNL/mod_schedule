@@ -1,29 +1,46 @@
 <?php
 // No direct access
 defined('_JEXEC') or die; ?>
+
 <div class="schedule">
   <div class="schedule-title">
-    <i class="fas fa-calendar-alt"></i> Programma
+    <i class="fas fa-calendar-alt"></i> Programma <?PHP echo ucfirst($filter); ?>
   </div>
   <div class="schedule-content">
     <ul class="nav">
       <?PHP
+      $days_count = 0;
       foreach ($grouped_events as $key=>$value) {
-        if (date("Y-m-d", $value[0]->startDate/1000) == date("Y-m-d")) {
+        // Setup date menu
+        if (time() < $value[0]->startDate/1000 && $days_count === 0) {
+          $days_count++;
+          echo "<li class=\"active\" id=\"activekey\">";
+        } else if (date("Y-m-d", $value[0]->startDate/1000) == date("Y-m-d")) {
           echo "<li class=\"active\" id=\"activekey\">";
         } else {
           echo "<li>";
         }
          ?>
-         <a data-toggle="pill" href="#<?PHP echo $value[0]->startDate; ?>"><?PHP echo $key; ?></a></li>
+         <a data-toggle="pill" href="#<?PHP echo $value[0]->startDate; ?>"><?PHP echo $key; ?></a>
+       </li>
       <?PHP } ?>
     </ul>
 
     <div class="tab-content">
-      <?PHP foreach ($grouped_events as $key=>$events) { ?>
-        <div id="<?PHP echo $events[0]->startDate; ?>" class="<?PHP echo date("Y-m-d", $events[0]->startDate/1000) == date("Y-m-d") ? "active" : ""; ?> tab-pane fade in">
+      <?PHP
+      $make_first_active = True;
+      foreach ($grouped_events as $key=>$events) {
+        $active = "";
+        if ($events[0]->startDate/1000 == date("Y-m-d")) {
+          $active = "active";
+        } else if ($make_first_active) {
+          $make_first_active = False;
+          $active = "active";
+        }?>
+        <div id="<?PHP echo $events[0]->startDate; ?>" class="<?PHP echo $active; ?> tab-pane fade in">
             <ul class="<?php echo $moduleclass_sfx; ?>">
               <?PHP foreach ($events as &$event) {
+                // If a filter is defined, filter by subcamp
                 if ($filter == "" || strpos($event->tag, $filter) !== false) {
 
                 } else {
@@ -40,9 +57,10 @@ defined('_JEXEC') or die; ?>
                     <!-- Labels -->
                     <div class="labels">
                       <?PHP
-                      foreach(explode(",", $event->tag) as $tag){
+                        // Loop labels
+                        foreach(explode(",", $event->tag) as $tag){
                       ?>
-                      <span class="label label-<?PHP echo $tag;?>"><?PHP echo $tag;?></span>
+                        <span class="label label-<?PHP echo $tag;?>"><?PHP echo $tag;?></span>
                       <?PHP } ?>
                     </div>
                   </div>
@@ -54,8 +72,8 @@ defined('_JEXEC') or die; ?>
       <?PHP } ?>
     </div>
     <script>
-    console.log($('li.active').position());
-    $('ul.nav').animate({scrollLeft: $('li.active').position().left}, 500);
+    // Scroll to active element
+    $('ul.nav').animate({scrollLeft: $('li.active').position().left - 20}, 500);
     </script>
   </div>
 </div>
