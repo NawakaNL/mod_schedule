@@ -11,16 +11,28 @@
 setlocale(LC_ALL, 'nl-NL', 'nl_NL.utf8', 'NL_nl', 'nl_NL', 'nl');
 date_default_timezone_set('Amsterdam');
 
-function appendThings(/* map[string,mixed] */ $array, /* string */ $key, /* string */ $value) {
-   if (!isset($array[$key]))
-       $array[$key] = array($value);
-   else if (is_array($array[$key]))
-       $array[$key][] = $value;
-   else
-       $array[$key] = array($array[$key], $value);
+// maanden
+$months[1] = "januari";
+$months[2] = "februari";
+$months[3] = "maart";
+$months[4] = "april";
+$months[5] = "mei";
+$months[6] = "juni";
+$months[7] = "juli";
+$months[8] = "augustus";
+$months[9] = "september";
+$months[10] = "oktober";
+$months[11] = "november";
+$months[12] = "december";
 
-   return $array;
-}
+// dagen
+$weekdays[0] = "maandag";
+$weekdays[1] = "dinsdag";
+$weekdays[2] = "woensdag";
+$weekdays[3] = "donderdag";
+$weekdays[4] = "vrijdag";
+$weekdays[5] = "zaterdag";
+$weekdays[6] = "zondag";
 
 // No direct access
 defined('_JEXEC') or die;
@@ -32,7 +44,8 @@ $schedule = json_decode($file_contents);
 // Group schedule per day
 $grouped_events = [];
 foreach ($schedule as $value) {
-  $key = strftime('<span>%A</span><br> %e %B', $value->startDate/1000);
+  $timestamp = $value->startDate/1000;
+  $key = "<span>".$weekdays[date('w', $timestamp)]."</span><br>".date('j', $timestamp)." ".$months[date('n', $timestamp)];
   $grouped_events = appendThings($grouped_events, $key, $value);
 }
 
