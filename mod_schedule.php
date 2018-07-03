@@ -8,7 +8,7 @@
  */
 
 // Set date
-setlocale(LC_ALL, 'nl-NL', 'nl_NL.utf8', 'nl_NL', 'nl');
+setlocale(LC_ALL, 'nl-NL', 'nl_NL.utf8', 'NL_nl', 'nl_NL', 'nl');
 date_default_timezone_set('Amsterdam');
 
 function appendThings(/* map[string,mixed] */ $array, /* string */ $key, /* string */ $value) {
