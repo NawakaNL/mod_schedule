@@ -34,6 +34,17 @@ $weekdays[4] = "vrijdag";
 $weekdays[5] = "zaterdag";
 $weekdays[6] = "zondag";
 
+function appendThings(/* map[string,mixed] */ $array, /* string */ $key, /* string */ $value) {
+   if (!isset($array[$key]))
+       $array[$key] = array($value);
+   else if (is_array($array[$key]))
+       $array[$key][] = $value;
+   else
+       $array[$key] = array($array[$key], $value);
+
+   return $array;
+}
+
 // No direct access
 defined('_JEXEC') or die;
 
