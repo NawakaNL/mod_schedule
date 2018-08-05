@@ -56,7 +56,7 @@ $schedule = json_decode($file_contents);
 $grouped_events = [];
 foreach ($schedule as $value) {
   $timestamp = $value->startDate/1000;
-  $key = "<span>".$weekdays[date('w', $timestamp)]."</span><br>".date('j', $timestamp)." ".$months[date('n', $timestamp)];
+  $key = "<span>".$weekdays[(date('w', $timestamp) - 1) % 7]."</span><br>".date('j', $timestamp)." ".$months[date('n', $timestamp)];
   $grouped_events = appendThings($grouped_events, $key, $value);
 }
 
