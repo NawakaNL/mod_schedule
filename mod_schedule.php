@@ -32,7 +32,7 @@ $weekdays[2] = "woensdag";
 $weekdays[3] = "donderdag";
 $weekdays[4] = "vrijdag";
 $weekdays[5] = "zaterdag";
-$weekdays[6] = "zondag";
+$weekdays[-1] = "zondag";
 
 function appendThings(/* map[string,mixed] */ $array, /* string */ $key, /* string */ $value) {
    if (!isset($array[$key]))
@@ -56,7 +56,7 @@ $schedule = json_decode($file_contents);
 $grouped_events = [];
 foreach ($schedule as $value) {
   $timestamp = $value->startDate/1000;
-  $key = "<span>".$weekdays[(date('w', $timestamp) - 1) % 7]."</span><br>".date('j', $timestamp)." ".$months[date('n', $timestamp)];
+  $key = "<span>".$weekdays[(date('w', $timestamp) - 1)]."</span><br>".date('j', $timestamp)." ".$months[date('n', $timestamp)];
   $grouped_events = appendThings($grouped_events, $key, $value);
 }
 
